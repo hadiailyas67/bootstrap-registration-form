@@ -1,2 +1,3 @@
 # bootstrap-registration-form
-Responsive registration form built using Bootstrap only (no additional CSS or JavaScript).
+Responsive registration form built using Bootstrap 5 with custom CSS for glass effect and styling.
+
