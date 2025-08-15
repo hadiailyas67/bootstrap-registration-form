@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Beautiful Registration Form – Bootstrap 5</title>
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+
+  <style>
+    /* ===== Page Background ===== */
+    body {
+      min-height: 100vh;
+      background: 
+        linear-gradient( to bottom right, rgba(0,0,0,.55), rgba(0,0,0,.25) ),
+        url("https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2069&auto=format&fit=crop"); /* Replace this link with your own image */
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    /* ===== Glass Card Style ===== */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 1.25rem; /* 20px */
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .form-label {
+      font-weight: 600;
+      letter-spacing: .2px;
+    }
+
+    .brand-badge {
+      width: 56px; height: 56px;
+      display: grid; place-items: center;
+      border-radius: 50%;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.35);
+      backdrop-filter: blur(6px);
+    }
+
+    .hint {
+      font-size: .875rem;
+      opacity: .85;
+    }
+
+    /* Improve focus states */
+    .form-control:focus, .form-select:focus {
+      box-shadow: 0 0 0 .25rem rgba(13,110,253,.25);
+      border-color: rgba(13,110,253,.6);
+    }
+
+    /* Submit button flair */
+    .btn-gradient {
+      background: linear-gradient(135deg, #0d6efd, #6f42c1);
+      border: none;
+    }
+    .btn-gradient:hover { filter: brightness(1.05); }
+  </style>
+</head>
+<body>
+
+  <div class="container py-5 d-flex align-items-center justify-content-center" style="min-height: 100vh;">
+    <div class="col-12 col-md-10 col-lg-8 col-xxl-6">
+      <div class="glass-card p-4 p-md-5 text-white">
+        <div class="d-flex align-items-center gap-3 mb-4">
+          <div class="brand-badge">
+            <i class="bi bi-person-add fs-4"></i>
+          </div>
+          <div>
+            <h1 class="h3 mb-0">Create Account</h1>
+            <p class="mb-0 hint">Join us in under a minute ✨</p>
+          </div>
+        </div>
+
+        <!-- Registration Form -->
+        <form class="needs-validation" novalidate>
+          <!-- Full Name -->
+          <div class="mb-3">
+            <label class="form-label" for="fullName">Full Name</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-person"></i></span>
+              <input type="text" class="form-control" id="fullName" placeholder="e.g., Hadia ilyas" required />
+              <div class="invalid-feedback">Please enter your name.</div>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="mb-3">
+            <label class="form-label" for="email">Email</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+              <input type="email" class="form-control" id="email" placeholder="you@example.com" required />
+              <div class="invalid-feedback">Please enter a valid email address.</div>
+            </div>
+          </div>
+
+          <!-- Phone -->
+          <div class="mb-3">
+            <label class="form-label" for="phone">Phone</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-telephone"></i></span>
+              <input type="tel" class="form-control" id="phone" placeholder="03xx-xxxxxxx" pattern="^\d{10,12}$" required />
+              <div class="invalid-feedback">Please enter a valid phone number (10–12 digits).</div>
+            </div>
+            <div class="form-text text-light hint">Only digits, no spaces or dashes.</div>
+          </div>
+
+          <!-- Passwords in grid -->
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label" for="password">Password</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                <input type="password" class="form-control" id="password" placeholder="Minimum 6 characters" minlength="6" required />
+                <button class="btn btn-outline-light" type="button" id="togglePass" aria-label="Show password"><i class="bi bi-eye"></i></button>
+                <div class="invalid-feedback">Please provide a password (min 6 characters).</div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label" for="confirmPassword">Confirm Password</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-shield-check"></i></span>
+                <input type="password" class="form-control" id="confirmPassword" placeholder="Re-type password" required />
+                <div class="invalid-feedback">Passwords must match.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Gender & DOB -->
+          <div class="row g-3 mt-1">
+            <div class="col-md-6">
+              <label class="form-label d-block">Gender</label>
+              <div class="d-flex gap-3 align-items-center">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="gender" id="genderF" required />
+                  <label class="form-check-label" for="genderF"><i class="bi bi-gender-female me-1"></i>Female</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="gender" id="genderM" required />
+                  <label class="form-check-label" for="genderM"><i class="bi bi-gender-male me-1"></i>Male</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="gender" id="genderO" required />
+                  <label class="form-check-label" for="genderO"><i class="bi bi-gender-ambiguous me-1"></i>Other</label>
+                </div>
+                <div class="invalid-feedback d-block">Please select one.</div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label" for="dob">Date of Birth</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-calendar3"></i></span>
+                <input type="date" class="form-control" id="dob" required />
+                <div class="invalid-feedback">Please pick your date of birth.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Country -->
+          <div class="mt-3">
+            <label class="form-label" for="country">Country</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-geo"></i></span>
+              <select class="form-select" id="country" required>
+                <option value="" selected disabled>Choose…</option>
+                <option>Pakistan</option>
+                <option>India</option>
+                <option>Bangladesh</option>
+                <option>United Arab Emirates</option>
+                <option>United Kingdom</option>
+                <option>United States</option>
+                <option>Other</option>
+              </select>
+              <div class="invalid-feedback">Please select your country.</div>
+            </div>
+          </div>
+
+          <!-- Terms -->
+          <div class="form-check mt-4">
+            <input class="form-check-input" type="checkbox" value="" id="terms" required>
+            <label class="form-check-label" for="terms">
+              I agree to the <a href="#" class="link-light text-decoration-underline">Terms</a> & <a href="#" class="link-light text-decoration-underline">Privacy Policy</a>.
+            </label>
+            <div class="invalid-feedback">You must agree before submitting.</div>
+          </div>
+
+          <!-- Submit -->
+          <div class="d-grid mt-4">
+            <button class="btn btn-gradient btn-lg" type="submit">
+              <i class="bi bi-check2-circle me-2"></i>Create Account
+            </button>
+          </div>
+
+          <!-- Small helper -->
+          <p class="text-center mt-3 mb-0 hint">Already have an account? <a href="#" class="link-light text-decoration-underline">Sign in</a></p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap Bundle JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Bootstrap validation + password match check
+    (function() {
+      'use strict'
+      const form = document.querySelector('.needs-validation');
+      const pass = document.getElementById('password');
+      const cpass = document.getElementById('confirmPassword');
+      const phone = document.getElementById('phone');
+      const toggle = document.getElementById('togglePass');
+
+      // toggle password visibility
+      toggle.addEventListener('click', function(){
+        const isText = pass.type === 'text';
+        pass.type = isText ? 'password' : 'text';
+        this.innerHTML = isText ? '<i class="bi bi-eye"></i>' : '<i class="bi bi-eye-slash"></i>';
+      });
+
+      function validateMatch(){
+        if (cpass.value !== pass.value) {
+          cpass.setCustomValidity('Mismatch');
+        } else {
+          cpass.setCustomValidity('');
+        }
+      }
+      pass.addEventListener('input', validateMatch);
+      cpass.addEventListener('input', validateMatch);
+
+      // Restrict phone to digits only
+      phone.addEventListener('input', () => phone.value = phone.value.replace(/[^\d]/g, ''));
+
+      form.addEventListener('submit', function(event) {
+        validateMatch();
+        if (!form.checkValidity()) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    })();
+  </script>
+</body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regform</title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <script src="bootstrap.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+    <div class="containe-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <h1 class="offset-md-6">Registeration Form</h1>
+               <form action="" class="offset-md-6">
+                <div class="form-label">
+                    <label for="" class="form-label"><b>Name:</b></label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                    <i class="bi bi-envelope-at-fill"></i>
+                    <label for="" class="form-label">Email:</label>
+                    
+                    <input type="text" class="form-control">
+                </div>
+               </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html> -->
